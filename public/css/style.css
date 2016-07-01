@@ -1,0 +1,24 @@
+body {
+  font-family: Tahoma;
+  text-align: center;
+}
+
+form {
+  border: 1px solid black;
+  padding: 2%;
+  margin: 3% 35%;
+  background-color: rgb(85,209,242);
+  font-size: 16px;
+}
+
+table {
+  margin: 2% auto;
+  table-layout: fixed;
+  font-size: 16px;
+  text-align: center;
+}
+
+table tr:first-child th {
+  background-color: rgb(85,209,242);
+  text-align: center;
+}

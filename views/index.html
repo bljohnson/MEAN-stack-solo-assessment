@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="heroApp">
 	<head>
 		<meta charset="utf-8">
 		<title>MEAN Stack Solo Assessment | Bethany Johnson</title>
@@ -9,6 +9,65 @@
 		<link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
 	</head>
 	<body>
+		<h1>Hero Tracker</h1>
 
+		<!-- ng-init to display all heroes currently in db on page load -->
+		<div ng-controller="HeroController" ng-init="getHeroes()">
+
+		<!-- Form to add a hero -->
+		<form>
+		    <div class="form-group">
+		      <label for="alias">Alias (Superhero Name)</label>
+		      <input type="text" ng-model="aliasIn" class="form-control" id="alias" value=""<br>
+		    </div>
+		    <div class="form-group">
+		      <label for="firstName">First Name</label>
+		      <input type="text" ng-model="firstNameIn" class="form-control" id="firstName" value=""<br>
+		    </div>
+		    <div class="form-group">
+		      <label for="lastName">Last Name</label>
+		      <input type="text" ng-model="lastNameIn" class="form-control" id="lastName" value=""<br>
+		    </div>
+		    <div class="form-group">
+		      <label for="city">City</label>
+		      <input type="text" ng-model="cityIn" class="form-control" id="city" value=""<br>
+		    </div>
+		    <div class="form-group">
+			  <label for="powerName">Power Name</label>
+			  <select ng-model="powerIn">
+			  	<option value="Invisibility">Invisibility</option>
+			  	<option value="Flight">Flight</option>
+			  	<option value="Super Speed">Super Speed</option>
+			  	<option value="Heat Vision">Heat Vision</option>
+			  	<option value="Super Strength">Super Strength</option>
+			  	<option value="Accelerated Healing">Accelerated Healing</option>
+			  	<option value="Power Blast">Power Blast</option>
+			  	<option value="Animal Affinity">Animal Affinity</option>
+			  </select>
+		    </div>
+
+		      <button type="button" name="addButton" class="btn btn-default" ng-click="addHero()">Add Hero</button>
+		  </form>
+
+		  <!-- Table to-display to DOM all heroes in array of hero objects from herotrackerdb-->
+		  <table class="table table-striped">
+		    <tr>
+		      <th>Alias</th>
+		      <th>First Name</th>
+		      <th>Last Name</th>
+		      <th>City</th>
+		      <th>Superpower</th>
+			<th>Delete</th>
+		    </tr>
+		    <tr ng-repeat="hero in allHeroes">
+		      <td>{{hero.alias}}</td>
+		      <td>{{hero.first_name}}</td>
+		      <td>{{hero.last_name}}</td>
+			<td>{{hero.city}}</td>
+			<td>{{hero.power_name}}</td>
+		      <td><button type="button" name="deleteButton" class="btn btn-default" id="{{hero._id}}" ng-click="deleteHero($index)">Delete Hero</button></td>
+		    </tr>
+		  </table>
+		</div>
 	</body>
 </html>
